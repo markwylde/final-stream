@@ -1,21 +1,21 @@
 const ErrorWithObject = require('error-with-object');
 
-function parseBody (request, mutation, callback) {
+function parseBody (stream, mutation, callback) {
   if (!callback) {
     callback = mutation;
     mutation = undefined;
   }
 
-  if (!request) {
-    throw new ErrorWithObject({
-      code: 'NO_REQUEST_OBJECT',
-      message: 'You did not set a request object. Nowhere to read stream from.'
-    });
+  if (!stream) {
+    return callback(new ErrorWithObject({
+      code: 'NO_STREAM_OBJECT',
+      message: 'You did not set a stream.'
+    }));
   }
 
   let body = [];
 
-  request
+  stream
     .on('data', function (chunk) {
       body.push(chunk);
     })
