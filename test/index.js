@@ -1,6 +1,5 @@
 const test = require('tape');
 const fs = require('fs');
-const path = require('path');
 const Readable = require('stream').Readable;
 
 const finalStream = require('../');
@@ -32,11 +31,8 @@ test('basic stream to json', t => {
 
 test('basic stream with invalid json', t => {
   t.plan(1);
-  console.log(__dirname, './testInvalidJsonFileToStream.json', path.resolve(__dirname, './testInvalidJsonFileToStream.json'))
-  const stream = fs.createReadStream(
-    path.resolve(__dirname, './testInvalidJsonFileToStream.json'),
-    { highWaterMark: 32 }
-  );
+
+  const stream = fs.createReadStream('./test/testInvalidJsonFileToStream.json', { highWaterMark: 32 });
 
   finalStream(stream, JSON.parse, function (error, result) {
     t.ok(error.toString().includes('SyntaxError: Unexpected token } in JSON'));
