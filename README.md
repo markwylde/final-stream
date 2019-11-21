@@ -10,18 +10,18 @@ A tool to read a full stream and callback once finished with the data
 ## Example Usage
 ### As a pure string
 ```javascript
-const finalStream = require('final-stream')
+const finalStream = require('final-stream');
 finalStream(response, function (error, result) {
-  console.log({error, result})
-})
+  console.log({error, result});
+});
 ```
 
 ### With a mutator
 ```javascript
-const finalStream = require('final-stream')
+const finalStream = require('final-stream');
 finalStream(response, JSON.parse, function (error, result) {
-  console.log({error, result})
-})
+  console.log({error, result});
+});
 ```
 
 ## License
