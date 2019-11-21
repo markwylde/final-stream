@@ -32,7 +32,7 @@ test('basic stream to json', t => {
 
 test('basic stream with invalid json', t => {
   t.plan(1);
-
+  console.log(__dirname, './testJsonFileToStream.invalidjson')
   const stream = fs.createReadStream(
     path.resolve(__dirname, './testJsonFileToStream.invalidjson'),
     { highWaterMark: 32 }
