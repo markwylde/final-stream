@@ -23,7 +23,13 @@ function parseBody (stream, mutation, callback) {
     .on('end', function () {
       const bodyString = Buffer.concat(body).toString();
 
-      callback(null, bodyString && mutation ? mutation(bodyString) : bodyString);
+      let finalBody
+      try {
+        finalBody = bodyString && mutation ? mutation(bodyString) : bodyString
+        callback(null, finalBody);
+      } catch (error) {
+        callback(error);
+      }
     })
     .on('error', function (error) {
       callback(error);
