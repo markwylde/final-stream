@@ -7,13 +7,13 @@ function parseBody (stream, mutation, callback) {
   }
 
   if (!stream) {
-    return callback(new ErrorWithObject({
+    throw new ErrorWithObject({
       code: 'NO_STREAM_OBJECT',
       message: 'You did not set a stream.'
-    }));
+    });
   }
 
-  let body = [];
+  const body = [];
 
   stream
     .on('data', function (chunk) {
@@ -21,17 +21,9 @@ function parseBody (stream, mutation, callback) {
     })
 
     .on('end', function () {
-      body = Buffer.concat(body).toString();
+      const bodyString = Buffer.concat(body).toString();
 
-      if (body) {
-        try {
-          return callback(null, mutation ? mutation(body) : body);
-        } catch (error) {
-          return callback(new ErrorWithObject({ code: 400, error, body }));
-        }
-      }
-
-      return callback(null, null);
+      callback(null, bodyString && mutation ? mutation(bodyString) : bodyString);
     })
     .on('error', function (error) {
       callback(error);
