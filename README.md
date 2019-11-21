@@ -1,4 +1,4 @@
-# FinalStream
+# Final Stream
 [![Build Status](https://travis-ci.org/markwylde/final-stream.svg?branch=master)](https://travis-ci.org/markwylde/final-stream)
 [![David DM](https://david-dm.org/markwylde/final-stream.svg)](https://david-dm.org/markwylde/final-stream)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/markwylde/final-stream)
