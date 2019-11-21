@@ -29,12 +29,13 @@ test('basic stream to json', t => {
   });
 });
 
-test('basic stream to invalid json', t => {
+test('basic stream with invalid json', t => {
   t.plan(1);
 
   const stream = fs.createReadStream('./test/testJsonFileToStream.invalidjson', { highWaterMark: 32 });
 
   finalStream(stream, JSON.parse, function (error, result) {
+    console.log(error, error.toString())
     t.ok(error.toString().includes('SyntaxError: Unexpected token } in JSON'));
   });
 });
