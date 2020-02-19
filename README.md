@@ -11,7 +11,7 @@ A tool to read a full stream and callback once finished with the data
 ### As a pure string
 ```javascript
 const finalStream = require('final-stream');
-finalStream(response, function (error, result) {
+finalStream(request, function (error, result) {
   console.log({error, result});
 });
 ```
@@ -19,7 +19,7 @@ finalStream(response, function (error, result) {
 ### With a mutator
 ```javascript
 const finalStream = require('final-stream');
-finalStream(response, JSON.parse, function (error, result) {
+finalStream(request, JSON.parse, function (error, result) {
   console.log({error, result});
 });
 ```
