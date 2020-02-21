@@ -1,39 +1,39 @@
-const ErrorWithObject = require('error-with-object');
+const ErrorWithObject = require('error-with-object')
 
 function parseBody (stream, mutation, callback) {
   if (!callback) {
-    callback = mutation;
-    mutation = undefined;
+    callback = mutation
+    mutation = undefined
   }
 
   if (!stream) {
     throw new ErrorWithObject({
       code: 'NO_STREAM_OBJECT',
       message: 'You did not set a stream.'
-    });
+    })
   }
 
-  const body = [];
+  const body = []
 
   stream
     .on('data', function (chunk) {
-      body.push(chunk);
+      body.push(chunk)
     })
 
     .on('end', function () {
-      const bodyString = Buffer.concat(body).toString();
+      const bodyString = Buffer.concat(body).toString()
 
-      let finalBody;
+      let finalBody
       try {
-        finalBody = bodyString && mutation ? mutation(bodyString) : bodyString;
-        callback(null, finalBody);
+        finalBody = mutation ? mutation(bodyString) : bodyString
+        callback(null, finalBody)
       } catch (error) {
-        callback(error);
+        callback(error)
       }
     })
     .on('error', function (error) {
-      callback(error);
-    });
+      callback(error)
+    })
 }
 
-module.exports = parseBody;
+module.exports = parseBody
