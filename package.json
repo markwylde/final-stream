@@ -17,7 +17,6 @@
     "tape": "^4.11.0"
   },
   "dependencies": {
-    "error-with-object": "^1.1.0"
   },
   "bugs": {
     "url": "https://github.com/markwylde/final-stream/issues"
