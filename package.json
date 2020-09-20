@@ -1,6 +1,6 @@
 {
   "name": "final-stream",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "A tool to read a full stream and callback once finished with the data",
   "main": "index.js",
   "repository": {
@@ -16,8 +16,7 @@
     "c8": "^6.0.1",
     "tape": "^4.11.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "bugs": {
     "url": "https://github.com/markwylde/final-stream/issues"
   },
