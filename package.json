@@ -1,11 +1,11 @@
 {
   "name": "final-stream",
   "version": "1.1.0",
-  "description": "",
+  "description": "A tool to read a full stream and callback once finished with the data",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markwylde/final-stream.git"
+    "url": "git+https://github.com/markwylde/final-stream.git"
   },
   "scripts": {
     "test": "c8 -o /tmp node test"
@@ -18,5 +18,13 @@
   },
   "dependencies": {
     "error-with-object": "^1.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/markwylde/final-stream/issues"
+  },
+  "homepage": "https://github.com/markwylde/final-stream#readme",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": []
 }
