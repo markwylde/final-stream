@@ -9,15 +9,27 @@ function parseBody (stream, callback) {
 
   const body = [];
 
+  let finished = false;
+  function finish () {
+    if (finished) {
+      return;
+    }
+    finished = true;
+    callback(null, Buffer.concat(body));
+  }
+
   stream
     .on('data', function (chunk) {
       body.push(chunk);
     })
-
-    .on('close', function () {
-      callback(null, Buffer.concat(body));
-    })
+    .on('destroy', finish)
+    .on('end', finish)
+    .on('close', finish)
     .on('error', function (error) {
+      if (finished) {
+        console.log(error);
+        return;
+      }
       callback(error);
     });
 }
