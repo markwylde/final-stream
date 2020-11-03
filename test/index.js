@@ -77,3 +77,27 @@ test('when stream errors', t => {
 
   stream.emit('error', new Error('oh no'));
 });
+
+test('when stream is destroyed prematurely', async t => {
+  t.plan(1);
+
+  const testFilePath = './test/testFiletoStream.txt';
+  const testFileContent = fs.readFileSync(testFilePath, 'utf8');
+  const stream = fs.createReadStream(testFilePath, { highWaterMark: 32 });
+  stream.destroy();
+
+  const result = await finalStream(stream);
+  t.equal(result.toString(), '');
+});
+
+test('when stream is closed prematurely', async t => {
+  t.plan(1);
+
+  const testFilePath = './test/testFiletoStream.txt';
+  const testFileContent = fs.readFileSync(testFilePath, 'utf8');
+  const stream = fs.createReadStream(testFilePath, { highWaterMark: 32 });
+  stream.close();
+
+  const result = await finalStream(stream);
+  t.equal(result.toString(), '');
+});

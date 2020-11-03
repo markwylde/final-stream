@@ -22,7 +22,6 @@ function parseBody (stream, callback) {
     .on('data', function (chunk) {
       body.push(chunk);
     })
-    .on('destroy', finish)
     .on('end', finish)
     .on('close', finish)
     .on('error', function (error) {
