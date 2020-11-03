@@ -14,7 +14,7 @@ function parseBody (stream, callback) {
       body.push(chunk);
     })
 
-    .on('end', function () {
+    .on('close', function () {
       callback(null, Buffer.concat(body));
     })
     .on('error', function (error) {
