@@ -1,0 +1,27 @@
+{
+  "name": "final-stream",
+  "version": "2.0.3",
+  "description": "A tool to read a full stream and callback once finished with the data",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markwylde/final-stream.git"
+  },
+  "scripts": {
+    "test": "c8 -o /tmp node test"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "basictap": "^1.3.1",
+    "c8": "^7.7.3"
+  },
+  "bugs": {
+    "url": "https://github.com/markwylde/final-stream/issues"
+  },
+  "homepage": "https://github.com/markwylde/final-stream#readme",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": []
+}
