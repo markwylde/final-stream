@@ -1,6 +1,6 @@
 {
   "name": "final-stream",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A tool to read a full stream and callback once finished with the data",
   "main": "index.js",
   "repository": {
